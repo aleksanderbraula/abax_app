@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), BeerListFragment.OnBeerSelectedListene
                 return
             }
 
-            showFragment(BeerListFragment())
+            showFragment(BeerListFragment.newInstance())
         }
     }
 
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity(), BeerListFragment.OnBeerSelectedListene
     }
 
     override fun onBeerSelected(position: Int) {
-        showFragment(BeerDetailsFragment())
+        showFragment(BeerDetailsFragment.newInstance(position))
     }
 
     private fun showFragment(fragment: Fragment) {
