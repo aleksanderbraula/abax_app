@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.braula.abaxapp.R
 import com.braula.abaxapp.model.Beer
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_beer.view.*
 
-class BeerAdapter(context: Context): BaseAdapter() {
+class BeerAdapter(private val context: Context): BaseAdapter() {
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     var items = arrayListOf<Beer>()
@@ -19,7 +20,13 @@ class BeerAdapter(context: Context): BaseAdapter() {
 
         val beer = getItem(position)
 
+        Glide.with(context)
+                .load(beer.imageUrl)
+                .placeholder(R.drawable.icons8_beer_48)
+                .into(rowView.icon)
+
         rowView.name.text = beer.name
+        rowView.abvText.text = "${beer.abv}%"
 
         return rowView
     }
