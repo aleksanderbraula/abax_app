@@ -6,27 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.braula.abaxapp.R
-import com.braula.abaxapp.model.Beer
-import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_beer.view.*
+import com.braula.abaxapp.model.Ingredient
+import kotlinx.android.synthetic.main.item_ingredient.view.*
 
-class BeerAdapter(private val context: Context): BaseAdapter() {
+class IngredientAdapter(context: Context, private val items: List<Ingredient>): BaseAdapter() {
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-
-    var items = arrayListOf<Beer>()
-
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val rowView = inflater.inflate(R.layout.item_beer, parent, false)
+        val rowView = inflater.inflate(R.layout.item_ingredient, parent, false)
 
-        val beer = getItem(position)
+        val ingredient = getItem(position)
 
-        Glide.with(context)
-                .load(beer.imageUrl)
-                .placeholder(R.drawable.icons8_beer_48)
-                .into(rowView.icon)
-
-        rowView.nameText.text = beer.name
-        rowView.abvText.text = "${beer.abv}%"
+        rowView.nameText.text = ingredient.name
+        rowView.amountText.text = "${ingredient.amount.value} ${ingredient.amount.unit}"
+        if (ingredient.add != null && ingredient.attribute != null) {
+            rowView.otherText.text = "(${ingredient.add},${ingredient.attribute})"
+        }
 
         return rowView
     }

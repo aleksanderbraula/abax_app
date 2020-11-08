@@ -6,27 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.braula.abaxapp.R
-import com.braula.abaxapp.model.Beer
-import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_beer.view.*
+import com.braula.abaxapp.model.Ingredient
+import com.braula.abaxapp.model.MashTemp
+import kotlinx.android.synthetic.main.item_ingredient.view.*
+import kotlinx.android.synthetic.main.item_mash_temp.view.*
 
-class BeerAdapter(private val context: Context): BaseAdapter() {
+class MashTempAdapter (context: Context, private val items: List<MashTemp>): BaseAdapter() {
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-
-    var items = arrayListOf<Beer>()
-
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val rowView = inflater.inflate(R.layout.item_beer, parent, false)
+        val rowView = inflater.inflate(R.layout.item_mash_temp, parent, false)
 
-        val beer = getItem(position)
+        val mashTemp = getItem(position)
 
-        Glide.with(context)
-                .load(beer.imageUrl)
-                .placeholder(R.drawable.icons8_beer_48)
-                .into(rowView.icon)
-
-        rowView.nameText.text = beer.name
-        rowView.abvText.text = "${beer.abv}%"
+        rowView.mashTempText.text = "${mashTemp.temp.value}${mashTemp.temp.unit} for ${mashTemp.duration} minutes"
 
         return rowView
     }

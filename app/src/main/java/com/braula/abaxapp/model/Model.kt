@@ -20,8 +20,8 @@ data class Ingredients(
 data class Ingredient(
     val name: String,
     val amount: Amount,
-    val add: String,
-    val attribute: String
+    val add: String?,
+    val attribute: String?
 )
 
 data class Amount(

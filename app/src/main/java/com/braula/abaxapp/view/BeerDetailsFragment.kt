@@ -5,10 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.braula.abaxapp.R
 import com.braula.abaxapp.model.Beer
+import com.braula.abaxapp.model.Ingredient
+import com.braula.abaxapp.model.Method
+import com.braula.abaxapp.view.adapter.IngredientAdapter
+import com.braula.abaxapp.view.adapter.MashTempAdapter
 import com.braula.abaxapp.viewmodel.BeerViewModel
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.fragment_beer_details.*
+import org.koin.android.ext.android.inject
 
 class BeerDetailsFragment: Fragment() {
     companion object {
@@ -25,7 +31,11 @@ class BeerDetailsFragment: Fragment() {
         }
     }
 
-    private val model: BeerViewModel by viewModels()
+    private lateinit var hopsAdapter: IngredientAdapter
+    private lateinit var maltsAdapter: IngredientAdapter
+    private lateinit var mashTempAdapter: MashTempAdapter
+
+    private val model: BeerViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,13 +50,43 @@ class BeerDetailsFragment: Fragment() {
 
         val position = requireArguments().getInt(POSITION_KEY)
 
-        model.beers.value?.let{
-            val beer = it[position]
-            showBeerDetails(beer)
+        showBeerDetails(model.getBeer(position))
+    }
+
+    private fun showBeerDetails(beer: Beer?) {
+        beer?.let {
+            Glide.with(this)
+                    .load(it.imageUrl)
+                    .into(icon)
+
+            nameText.text = beer.name
+            abvText.text = "${beer.abv}%"
+            descriptionText.text = beer.description
+
+            displayHops(beer.ingredients.hops)
+            displayMalts(beer.ingredients.malts)
+            displayMethod(beer.method)
         }
     }
 
-    private fun showBeerDetails(beer: Beer) {
-        println(beer)
+    private fun displayHops(hops: List<Ingredient>) {
+        hopsAdapter = IngredientAdapter(requireContext(), hops)
+        hopsList.adapter = hopsAdapter
+    }
+
+    private fun displayMalts(malts: List<Ingredient>) {
+        maltsAdapter = IngredientAdapter(requireContext(), malts)
+        maltsList.adapter = maltsAdapter
+    }
+
+    private fun displayMethod(method: Method) {
+        fermentationTempText.text = "${method.fermentation.temp.value} ${method.fermentation.temp.unit}"
+        method.twist?.let {
+            twistWrapper.visibility = View.VISIBLE
+            twistText.text = it
+        }
+
+        mashTempAdapter = MashTempAdapter(requireContext(), method.mashTemp)
+        mashTempList.adapter = mashTempAdapter
     }
 }

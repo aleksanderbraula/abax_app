@@ -4,4 +4,6 @@
     <dimen name="icon_size">40dp</dimen>
     <dimen name="default_margin">10dp</dimen>
     <dimen name="default_padding">10dp</dimen>
+    <dimen name="detail_image_height">200dp</dimen>
+    <dimen name="details_desc_width">100dp</dimen>
 </resources>

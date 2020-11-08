@@ -1,36 +1,40 @@
 package com.braula.abaxapp.viewmodel
 
 import android.annotation.SuppressLint
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.braula.abaxapp.model.Beer
-import com.braula.abaxapp.model.service.ApiError
+import com.braula.abaxapp.model.ApiError
 import com.braula.abaxapp.model.service.interactor.BeerInteractor
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import org.koin.core.KoinComponent
 
-class BeerViewModel : ViewModel(){
-    private var beersLoaded = false
+class BeerViewModel(application: Application) : AndroidViewModel(application), KoinComponent {
+    var beersLoaded = false
     val beers = MutableLiveData<ArrayList<Beer>>()
     val error = MutableLiveData<ApiError>()
 
-    val beerInteractor = BeerInteractor()
+    private val beerInteractor = BeerInteractor()
 
     @SuppressLint("CheckResult")
     fun loadBeers() {
-        if (!beersLoaded) {
-            beerInteractor.getBeers()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                    {
-                        beers.postValue(it)
-                        beersLoaded = true;
-                    },
-                    {
-                        error.postValue(ApiError.LOADING_ERROR)
-                    }
-                )
-        }
+        beerInteractor.getBeers()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    beers.postValue(it)
+                    beersLoaded = true
+                },
+                {
+                    error.postValue(ApiError.LOADING_ERROR)
+                }
+            )
+    }
+
+    fun getBeer(position: Int): Beer? {
+        return beers.value?.get(position)
     }
 }

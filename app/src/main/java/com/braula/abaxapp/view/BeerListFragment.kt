@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.braula.abaxapp.R
 import com.braula.abaxapp.model.Beer
-import com.braula.abaxapp.model.service.ApiError
+import com.braula.abaxapp.model.ApiError
 import com.braula.abaxapp.view.adapter.BeerAdapter
 import com.braula.abaxapp.viewmodel.BeerViewModel
 import kotlinx.android.synthetic.main.fragment_beer_list.*
+import org.koin.android.ext.android.inject
 
 class BeerListFragment: Fragment() {
     companion object {
@@ -23,7 +23,7 @@ class BeerListFragment: Fragment() {
     }
 
     private lateinit var callback: OnBeerSelectedListener
-    private val model: BeerViewModel by viewModels()
+    private val model: BeerViewModel by inject()
 
     fun setOnBeerSelectedListener(callback: OnBeerSelectedListener) {
         this.callback = callback
@@ -61,9 +61,10 @@ class BeerListFragment: Fragment() {
     }
 
     private fun loadData() {
-        showLoading()
-        model.loadBeers()
-
+        if (!model.beersLoaded) {
+            showLoading()
+            model.loadBeers()
+        }
     }
 
     private fun showLoading() {

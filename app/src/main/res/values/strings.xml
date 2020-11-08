@@ -3,4 +3,12 @@
     <string name="loading">Loading</string>
     <string name="loading_error">Loading error.</string>
     <string name="abv">ABV</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="hops">Hops:</string>
+    <string name="malts">Malts:</string>
+    <string name="methods">Method:</string>
+    <string name="twist">Twist</string>
+    <string name="fermentation">Fermentation</string>
+    <string name="mash_temp">Mash Temp</string>
 </resources>

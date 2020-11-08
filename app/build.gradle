@@ -1,6 +1,7 @@
 buildscript {
     ext.lifecycle_version = '2.2.0'
     ext.retrofit_version = '2.3.0'
+    ext.koin_version = '2.0.0'
 }
 
 apply plugin: 'com.android.application'
@@ -48,8 +49,8 @@ dependencies {
 
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
 
     implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'

@@ -1,11 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="details"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/default_padding">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/detail_image_height"
+            android:layout_marginBottom="@dimen/default_margin"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="@dimen/details_desc_width"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/name"/>
+
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="@dimen/details_desc_width"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/abv"/>
+
+            <TextView
+                android:id="@+id/abvText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="@dimen/details_desc_width"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/description"/>
+
+            <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="@dimen/details_desc_width"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/hops"/>
+
+            <com.braula.abaxapp.view.NonScrollListView
+                android:id="@+id/hopsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dividerHeight="0dp"
+                android:divider="@null"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="@dimen/details_desc_width"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/malts"/>
+
+            <com.braula.abaxapp.view.NonScrollListView
+                android:id="@+id/maltsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dividerHeight="0dp"
+                android:divider="@null"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:layout_width="@dimen/details_desc_width"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="@string/methods"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin">
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:text="@string/mash_temp"
+                android:textStyle="bold"/>
+
+            <com.braula.abaxapp.view.NonScrollListView
+                android:id="@+id/mashTempList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dividerHeight="0dp"
+                android:divider="@null"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin">
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:text="@string/fermentation"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/fermentationTempText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/twistWrapper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:text="@string/twist"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/twistText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
