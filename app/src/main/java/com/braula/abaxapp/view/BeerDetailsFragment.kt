@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.braula.abaxapp.R
+import com.braula.abaxapp.model.Beer
+import com.braula.abaxapp.viewmodel.BeerViewModel
 
 class BeerDetailsFragment: Fragment() {
     companion object {
@@ -22,6 +25,8 @@ class BeerDetailsFragment: Fragment() {
         }
     }
 
+    private val model: BeerViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,4 +35,18 @@ class BeerDetailsFragment: Fragment() {
         return inflater.inflate(R.layout.fragment_beer_details, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val position = requireArguments().getInt(POSITION_KEY)
+
+        model.beers.value?.let{
+            val beer = it[position]
+            showBeerDetails(beer)
+        }
+    }
+
+    private fun showBeerDetails(beer: Beer) {
+        println(beer)
+    }
 }
