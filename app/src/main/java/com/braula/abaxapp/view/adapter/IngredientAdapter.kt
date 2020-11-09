@@ -5,21 +5,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.TextView
 import com.braula.abaxapp.R
 import com.braula.abaxapp.model.Ingredient
-import kotlinx.android.synthetic.main.item_ingredient.view.*
 
-class IngredientAdapter(context: Context, private val items: List<Ingredient>): BaseAdapter() {
+class IngredientAdapter(private val context: Context, private val items: List<Ingredient>): BaseAdapter() {
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val rowView = inflater.inflate(R.layout.item_ingredient, parent, false)
+
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
+        val viewHolder: IngredientViewHolder
+        val rowView: View?
+
+        if (convertView == null) {
+            rowView = inflater.inflate(R.layout.item_ingredient, parent, false)
+            viewHolder = IngredientViewHolder(rowView)
+            rowView.tag = viewHolder
+        } else {
+            rowView = convertView
+            viewHolder = rowView.tag as IngredientViewHolder
+        }
 
         val ingredient = getItem(position)
 
-        rowView.nameText.text = ingredient.name
-        rowView.amountText.text = "${ingredient.amount.value} ${ingredient.amount.unit}"
+        viewHolder.nameText.text = ingredient.name
+        viewHolder.amountText.text = context.getString(R.string.amount_template, ingredient.amount.value, ingredient.amount.unit)
         if (ingredient.add != null && ingredient.attribute != null) {
-            rowView.otherText.text = "(${ingredient.add},${ingredient.attribute})"
+            viewHolder.otherText.text = context.getString(R.string.other_template, ingredient.add, ingredient.attribute)
         }
 
         return rowView
@@ -30,5 +41,10 @@ class IngredientAdapter(context: Context, private val items: List<Ingredient>): 
     override fun getItemId(position: Int) = position.toLong()
 
     override fun getCount() = items.size
+}
 
+class IngredientViewHolder(view: View?) {
+    val nameText: TextView = view?.findViewById(R.id.nameText) as TextView
+    val amountText: TextView = view?.findViewById(R.id.amountText) as TextView
+    val otherText: TextView = view?.findViewById(R.id.otherText) as TextView
 }

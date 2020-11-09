@@ -11,5 +11,4 @@ class BeerInteractor {
     fun getBeers(): Single<ArrayList<Beer>> {
         return beerApi.getBeers()
     }
-
 }

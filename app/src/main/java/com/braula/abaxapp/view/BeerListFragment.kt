@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.braula.abaxapp.R
-import com.braula.abaxapp.model.Beer
 import com.braula.abaxapp.model.ApiError
+import com.braula.abaxapp.model.Beer
 import com.braula.abaxapp.view.adapter.BeerAdapter
 import com.braula.abaxapp.viewmodel.BeerViewModel
 import kotlinx.android.synthetic.main.fragment_beer_list.*

@@ -1,4 +1,4 @@
-package com.braula.abaxapp.view
+package com.braula.abaxapp.view.ui
 
 import android.content.Context
 import android.util.AttributeSet

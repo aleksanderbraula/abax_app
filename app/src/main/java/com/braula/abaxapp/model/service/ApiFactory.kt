@@ -18,12 +18,12 @@ object ApiFactory {
         .setLenient()
         .create()
 
-    private fun retrofitPlayfab(): Retrofit = Retrofit.Builder()
+    private fun retrofitApi(): Retrofit = Retrofit.Builder()
         .client(okHttpClient)
         .baseUrl(BASE_API_URL)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
 
-    val beerApi: BeerApi = retrofitPlayfab().create(BeerApi::class.java)
+    val beerApi: BeerApi = retrofitApi().create(BeerApi::class.java)
 }

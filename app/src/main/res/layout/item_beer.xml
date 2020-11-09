@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="@dimen/default_padding">
 
     <ImageView
         android:id="@+id/icon"
         android:layout_width="@dimen/icon_size"
         android:layout_height="@dimen/icon_size"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/default_margin" />
 
     <TextView
         android:id="@+id/nameText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@id/icon"
-        android:layout_toLeftOf="@id/abvLayout"/>
+        android:layout_toLeftOf="@id/abvLayout"
+        android:layout_toRightOf="@id/icon" />
 
     <LinearLayout
         android:id="@+id/abvLayout"
@@ -27,19 +27,19 @@
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:layout_marginLeft="@dimen/default_margin"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/abv"/>
+            android:text="@string/abv" />
 
         <TextView
             android:id="@+id/abvText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="5.4%"/>
+            tools:text="5.4%" />
 
     </LinearLayout>
 

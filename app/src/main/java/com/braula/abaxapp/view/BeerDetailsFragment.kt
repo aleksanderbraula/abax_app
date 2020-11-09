@@ -60,7 +60,7 @@ class BeerDetailsFragment: Fragment() {
                     .into(icon)
 
             nameText.text = beer.name
-            abvText.text = "${beer.abv}%"
+            abvText.text = getString(R.string.abv_template, beer.abv)
             descriptionText.text = beer.description
 
             displayHops(beer.ingredients.hops)
@@ -80,7 +80,7 @@ class BeerDetailsFragment: Fragment() {
     }
 
     private fun displayMethod(method: Method) {
-        fermentationTempText.text = "${method.fermentation.temp.value} ${method.fermentation.temp.unit}"
+        fermentationTempText.text = getString(R.string.amount_template, method.fermentation.temp.value, method.fermentation.temp.unit)
         method.twist?.let {
             twistWrapper.visibility = View.VISIBLE
             twistText.text = it

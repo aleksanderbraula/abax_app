@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:layout_gravity="center_vertical"
     android:paddingBottom="@dimen/default_padding">
 
     <TextView
         android:id="@+id/nameText"
+        style="@style/IngredientStyleTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Ingredient"
+        android:layout_alignParentLeft="true"
         android:layout_marginRight="@dimen/default_margin"
-        style="@style/IngredientStyle"/>
+        tools:text="Ingredient" />
 
     <TextView
         android:id="@+id/amountText"
+        style="@style/IngredientStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="10 grams"
+        android:layout_below="@id/nameText"
+        android:layout_alignParentLeft="true"
         android:layout_marginRight="@dimen/default_margin"
-        style="@style/IngredientStyle"/>
+        tools:text="10 grams" />
 
     <TextView
         android:id="@+id/otherText"
+        style="@style/IngredientStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="start, bitter"
-        style="@style/IngredientStyle"/>
+        android:layout_below="@id/nameText"
+        android:layout_toRightOf="@id/amountText"
+        tools:text="start, bitter" />
 
-</LinearLayout>
+</RelativeLayout>

@@ -3,29 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:padding="@dimen/default_padding">
 
         <ImageView
             android:id="@+id/icon"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/detail_image_height"
-            android:layout_marginBottom="@dimen/default_margin"/>
+            android:layout_height="@dimen/details_image_height"
+            android:layout_marginBottom="@dimen/default_margin" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/default_margin">
 
             <TextView
+                style="@style/LineTitleStyle"
                 android:layout_width="@dimen/details_desc_width"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/name"/>
+                android:text="@string/name" />
 
             <TextView
                 android:id="@+id/nameText"
@@ -36,14 +36,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/default_margin">
 
             <TextView
+                style="@style/LineTitleStyle"
                 android:layout_width="@dimen/details_desc_width"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/abv"/>
+                android:text="@string/abv" />
 
             <TextView
                 android:id="@+id/abvText"
@@ -54,14 +54,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/default_margin">
 
             <TextView
+                style="@style/LineTitleStyle"
                 android:layout_width="@dimen/details_desc_width"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/description"/>
+                android:text="@string/description" />
 
             <TextView
                 android:id="@+id/descriptionText"
@@ -72,112 +72,112 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/default_margin">
 
             <TextView
+                style="@style/LineTitleStyle"
                 android:layout_width="@dimen/details_desc_width"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/hops"/>
+                android:text="@string/hops" />
 
-            <com.braula.abaxapp.view.NonScrollListView
+            <com.braula.abaxapp.view.ui.NonScrollListView
                 android:id="@+id/hopsList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:dividerHeight="0dp"
-                android:divider="@null"/>
+                android:divider="@null"
+                android:dividerHeight="0dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/default_margin">
 
             <TextView
+                style="@style/LineTitleStyle"
                 android:layout_width="@dimen/details_desc_width"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/malts"/>
+                android:text="@string/malts" />
 
-            <com.braula.abaxapp.view.NonScrollListView
+            <com.braula.abaxapp.view.ui.NonScrollListView
                 android:id="@+id/maltsList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:dividerHeight="0dp"
-                android:divider="@null"/>
+                android:divider="@null"
+                android:dividerHeight="0dp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/default_margin">
 
             <TextView
+                style="@style/LineTitleStyle"
                 android:layout_width="@dimen/details_desc_width"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/methods"/>
+                android:text="@string/method" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="@dimen/default_margin"
-            android:layout_marginBottom="@dimen/default_margin">
+            android:layout_marginLeft="@dimen/margin_5dp"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="90dp"
+                style="@style/LineTitleStyle"
+                android:layout_width="@dimen/details_method_width"
                 android:layout_height="wrap_content"
-                android:text="@string/mash_temp"
-                android:textStyle="bold"/>
+                android:text="@string/mash_temp" />
 
-            <com.braula.abaxapp.view.NonScrollListView
+            <com.braula.abaxapp.view.ui.NonScrollListView
                 android:id="@+id/mashTempList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:dividerHeight="0dp"
-                android:divider="@null"/>
+                android:divider="@null"
+                android:dividerHeight="0dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="@dimen/default_margin"
-            android:layout_marginBottom="@dimen/default_margin">
+            android:layout_marginLeft="@dimen/margin_5dp"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="90dp"
+                style="@style/LineTitleStyle"
+                android:layout_width="@dimen/details_method_width"
                 android:layout_height="wrap_content"
-                android:text="@string/fermentation"
-                android:textStyle="bold"/>
+                android:text="@string/fermentation" />
 
             <TextView
                 android:id="@+id/fermentationTempText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/twistWrapper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/margin_5dp"
             android:layout_marginBottom="@dimen/default_margin"
+            android:orientation="horizontal"
             android:visibility="gone">
 
             <TextView
-                android:layout_width="90dp"
+                style="@style/LineTitleStyle"
+                android:layout_width="@dimen/details_method_width"
                 android:layout_height="wrap_content"
-                android:text="@string/twist"
-                android:textStyle="bold"/>
+                android:text="@string/twist" />
 
             <TextView
                 android:id="@+id/twistText"

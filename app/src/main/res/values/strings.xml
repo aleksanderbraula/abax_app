@@ -7,8 +7,13 @@
     <string name="description">Description</string>
     <string name="hops">Hops:</string>
     <string name="malts">Malts:</string>
-    <string name="methods">Method:</string>
+    <string name="method">Method:</string>
     <string name="twist">Twist</string>
     <string name="fermentation">Fermentation</string>
     <string name="mash_temp">Mash Temp</string>
+
+    <string name="abv_template">%s %%</string>
+    <string name="amount_template">%.2f %s</string>
+    <string name="other_template">(%s, %s)</string>
+    <string name="mash_temp_template">%.2f %s for %d minutes</string>
 </resources>
